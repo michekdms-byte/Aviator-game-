@@ -1,0 +1,25 @@
+// Serveur AVIATOR GAME - MODE TEST
+const express = require('express');
+const app = express();
+app.use(express.json());
+
+// TES CLES TEST - tu les changeras après en LIVE
+const PUBLIC_KEY = "pk_test_TA_CLE_ICI";
+const SECRET_KEY = "sk_test_TA_CLE_ICI";
+
+app.get('/', (req, res) => {
+  res.send("Serveur AVIATOR GAME en marche !");
+});
+
+// Quand le joueur clique "Recharger"
+app.post('/recharger', (req, res) => {
+  const { montant, telephone } = req.body;
+  console.log("Le joueur veut recharger:", montant, telephone);
+  
+  // Ici, plus tard, on appellera le site de paiement
+  res.json({ message: "Demande reçue, en attente de paiement", montant });
+});
+
+app.listen(10000, () => {
+  console.log("Serveur prêt");
+});
